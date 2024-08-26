@@ -50,7 +50,17 @@ namespace Proyecto_Crud
                 }
                 else if(TablaPersonal.Columns[e.ColumnIndex].Name.Equals("Delete"))
                 {
-                    MessageBox.Show($"Se toco ELIMINAR con el id: {id} ");
+                    
+                    int elimindas = personarepo.EleminarPersonal(id);
+                    if (elimindas>0)
+                    {
+                        MessageBox.Show("Personal Eliminado con Exito", "ELimnar Personal", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        CargarDatos();
+                    }
+                    else
+                    {
+                        MessageBox.Show("El personal no FUE ELIMINADO", "ELimnar Personal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }

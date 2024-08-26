@@ -129,6 +129,21 @@ namespace DatosLayer
             
         }
 
+        public int EleminarPersonal(int id)
+        {
+            using (var conexion=DataBase.GetSqlConnection())
+            {
+                String deletePerson = "";
+                deletePerson = deletePerson + "DELETE FROM [dbo].[Suppliers] " + "\n";
+                deletePerson = deletePerson + $"      WHERE SupplierID='{id}'";
+                using (SqlCommand comando = new SqlCommand(deletePerson, conexion))
+                {
+                    comando.Parameters.AddWithValue("@SupplierID", id);
+                    int elimindos = comando.ExecuteNonQuery();
+                    return elimindos;
+                }
+            }
+        }
         public Person ObtenerPorId(int id)
         {
             using (var conexion=DataBase.GetSqlConnection())
