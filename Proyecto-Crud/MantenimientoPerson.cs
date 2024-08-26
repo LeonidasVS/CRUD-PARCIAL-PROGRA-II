@@ -48,35 +48,18 @@ namespace Proyecto_Crud
             };
             return nuevoCliente;
         }
-
-        public Boolean validarCampoNull(Object objeto)
-        {
-
-            foreach (PropertyInfo property in objeto.GetType().GetProperties())
-            {
-                object value = property.GetValue(objeto, null);
-                if (value=="")
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
         private void btnEnviarDatos_Click(object sender, EventArgs e)
         {
-            var resultado = 0;
-            
-
-            var nuevoCliente = ObtenerNuevoCliente();
-
-            if (validarCampoNull(nuevoCliente) == false)
+            if (text1.Text!="" && text2.Text != "" && text3.Text != "" && text4.Text != "" &&
+                text5.Text != "" && text6.Text != "" && textBox7.Text != "")
             {
+                var resultado = 0;
+                var nuevoCliente = ObtenerNuevoCliente();
                 resultado = persona.añadirPersonal(nuevoCliente);
 
-                if (resultado==1)
+                if (resultado == 1)
                 {
-                    MessageBox.Show("Personal Agregado con EXITO","Añadir Personal",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    MessageBox.Show("Personal Agregado con EXITO", "Añadir Personal", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     text1.Text = "";
                     text2.Text = "";
                     text3.Text = "";
@@ -88,7 +71,7 @@ namespace Proyecto_Crud
             }
             else
             {
-                MessageBox.Show("Completa los campos vacios", "Añadir Personal", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Debes completar los campos vacios", "CAMPOS VACIOS");
             }
         }
 
@@ -118,6 +101,62 @@ namespace Proyecto_Crud
             else
             {
                 MessageBox.Show($"ERROR", "Actulizacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void text5_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox7_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void text6_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void text4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void text2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void text1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void text3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetterOrDigit(e.KeyChar) && !char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
     }

@@ -66,6 +66,7 @@
             this.text1.Name = "text1";
             this.text1.Size = new System.Drawing.Size(171, 20);
             this.text1.TabIndex = 2;
+            this.text1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text1_KeyPress);
             // 
             // text2
             // 
@@ -73,6 +74,7 @@
             this.text2.Name = "text2";
             this.text2.Size = new System.Drawing.Size(171, 20);
             this.text2.TabIndex = 10;
+            this.text2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text2_KeyPress);
             // 
             // text5
             // 
@@ -80,6 +82,7 @@
             this.text5.Name = "text5";
             this.text5.Size = new System.Drawing.Size(171, 20);
             this.text5.TabIndex = 12;
+            this.text5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text5_KeyPress);
             // 
             // text4
             // 
@@ -87,6 +90,7 @@
             this.text4.Name = "text4";
             this.text4.Size = new System.Drawing.Size(171, 20);
             this.text4.TabIndex = 11;
+            this.text4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text4_KeyPress);
             // 
             // text3
             // 
@@ -94,6 +98,7 @@
             this.text3.Name = "text3";
             this.text3.Size = new System.Drawing.Size(171, 20);
             this.text3.TabIndex = 14;
+            this.text3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text3_KeyPress);
             // 
             // btnEnviarDatos
             // 
@@ -172,6 +177,7 @@
             this.text6.Name = "text6";
             this.text6.Size = new System.Drawing.Size(171, 20);
             this.text6.TabIndex = 24;
+            this.text6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text6_KeyPress);
             // 
             // label9
             // 
@@ -207,6 +213,7 @@
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(171, 20);
             this.textBox7.TabIndex = 26;
+            this.textBox7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox7_KeyPress);
             // 
             // btnModificar
             // 

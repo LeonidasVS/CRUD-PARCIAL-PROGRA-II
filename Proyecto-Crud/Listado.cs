@@ -43,14 +43,12 @@ namespace Proyecto_Crud
 
                 if (TablaPersonal.Columns[e.ColumnIndex].Name.Equals("Update"))
                 {
-                    //MessageBox.Show($"Se toco EDITAR con el id: {id} ");
                     MantenimientoPerson mante = new MantenimientoPerson(id);
                     mante.ShowDialog();
                     CargarDatos();
                 }
                 else if(TablaPersonal.Columns[e.ColumnIndex].Name.Equals("Delete"))
                 {
-                    
                     int elimindas = personarepo.EleminarPersonal(id);
                     if (elimindas>0)
                     {
