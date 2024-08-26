@@ -15,7 +15,7 @@ namespace DatosLayer
         public static string ConnectionString
         {
             get{
-                string CadenaConexion = ConfigurationManager.ConnectionStrings["AdventureWorks2019"].ConnectionString;
+                string CadenaConexion = ConfigurationManager.ConnectionStrings["NWConnection"].ConnectionString;
 
                 SqlConnectionStringBuilder conexionBuilder = new SqlConnectionStringBuilder(CadenaConexion);
 

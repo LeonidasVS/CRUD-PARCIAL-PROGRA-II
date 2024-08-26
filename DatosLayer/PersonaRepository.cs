@@ -14,20 +14,19 @@ namespace DatosLayer
             using (var conexion=DataBase.GetSqlConnection())
             {
                 String selectFrom = "";
-                selectFrom = selectFrom + "SELECT [BusinessEntityID] " + "\n";
-                selectFrom = selectFrom + "      ,[PersonType] " + "\n";
-                selectFrom = selectFrom + "      ,[NameStyle] " + "\n";
-                selectFrom = selectFrom + "      ,[Title] " + "\n";
-                selectFrom = selectFrom + "      ,[FirstName] " + "\n";
-                selectFrom = selectFrom + "      ,[MiddleName] " + "\n";
-                selectFrom = selectFrom + "      ,[LastName] " + "\n";
-                selectFrom = selectFrom + "      ,[Suffix] " + "\n";
-                selectFrom = selectFrom + "      ,[EmailPromotion] " + "\n";
-                selectFrom = selectFrom + "      ,[AdditionalContactInfo] " + "\n";
-                selectFrom = selectFrom + "      ,[Demographics] " + "\n";
-                selectFrom = selectFrom + "      ,[rowguid] " + "\n";
-                selectFrom = selectFrom + "      ,[ModifiedDate] " + "\n";
-                selectFrom = selectFrom + "  FROM [Person].[Person]";
+                selectFrom = selectFrom + "SELECT [SupplierID] " + "\n";
+                selectFrom = selectFrom + "      ,[CompanyName] " + "\n";
+                selectFrom = selectFrom + "      ,[ContactName] " + "\n";
+                selectFrom = selectFrom + "      ,[ContactTitle] " + "\n";
+                selectFrom = selectFrom + "      ,[Address] " + "\n";
+                selectFrom = selectFrom + "      ,[City] " + "\n";
+                selectFrom = selectFrom + "      ,[Region] " + "\n";
+                selectFrom = selectFrom + "      ,[PostalCode] " + "\n";
+                selectFrom = selectFrom + "      ,[Country] " + "\n";
+                selectFrom = selectFrom + "      ,[Phone] " + "\n";
+                selectFrom = selectFrom + "      ,[Fax] " + "\n";
+                selectFrom = selectFrom + "      ,[HomePage] " + "\n";
+                selectFrom = selectFrom + "  FROM [dbo].[Suppliers]";
 
                 using (SqlCommand comando=new SqlCommand(selectFrom,conexion))
                 {
@@ -47,15 +46,62 @@ namespace DatosLayer
         public Person LeerDelDataReader(SqlDataReader reader)
         {
             Person persona = new Person();
-            persona.BusinessEntityID = reader["BusinessEntityID"] == DBNull.Value ? 0 : (int)reader["BusinessEntityID"];
-            persona.PersonType = reader["PersonType"] == DBNull.Value ? "" : (string)reader["PersonType"];
-            persona.NameStyle = reader["NameStyle"] == DBNull.Value ? false : (bool)reader["NameStyle"];
-            persona.FirstName = reader["FirstName"] == DBNull.Value ? "" : (string)reader["FirstName"];
-            persona.LastName = reader["LastName"] == DBNull.Value ? "" : (string)reader["LastName"];
-            persona.EmailPromotion = reader["EmailPromotion"] == DBNull.Value ? 0 : (int)reader["EmailPromotion"];
-            persona.rowguid = reader["rowguid"] == DBNull.Value ? Guid.Empty : (Guid)reader["rowguid"];
-            persona.ModifiedDate = reader["ModifiedDate"] == DBNull.Value ? DateTime.MinValue : (DateTime)reader["ModifiedDate"];
+            persona.SupplierID = reader["SupplierID"] == DBNull.Value ? 0 : (int)reader["SupplierID"];
+            persona.CompanyName = reader["CompanyName"] == DBNull.Value ? "" : (string)reader["CompanyName"];
+            persona.ContactTitle = reader["ContactTitle"] == DBNull.Value ? "" : (string)reader["ContactTitle"];
+            persona.Address = reader["Address"] == DBNull.Value ? "" : (string)reader["Address"];
+            persona.City = reader["City"] == DBNull.Value ? "" : (string)reader["City"];
+            persona.Region = reader["Region"] == DBNull.Value ? "" : (string)reader["Region"];
+            persona.PostalCode = reader["PostalCode"] == DBNull.Value ? "" : (string)reader["PostalCode"];
+            persona.Country = reader["Country"] == DBNull.Value ? "" : (string)reader["Country"];
+            persona.Phone = reader["Phone"] == DBNull.Value ? "" : (string)reader["Phone"];
+            persona.Fax = reader["Fax"] == DBNull.Value ? "" : (string)reader["Fax"];
+            persona.HomePage = reader["HomePage"] == DBNull.Value ? "" : (string)reader["HomePage"];
+
             return persona;
         }
+
+        public int añadirPersonal(Person persona)
+        {
+            using (var conexion = DataBase.GetSqlConnection())
+            {
+                String InsertPerson = "";
+                InsertPerson = InsertPerson + "INSERT INTO [dbo].[Suppliers] " + "\n";
+                InsertPerson = InsertPerson + "           ([CompanyName] " + "\n";
+                InsertPerson = InsertPerson + "           ,[ContactName] " + "\n";
+                InsertPerson = InsertPerson + "           ,[ContactTitle] " + "\n";
+                InsertPerson = InsertPerson + "           ,[City] " + "\n";
+                InsertPerson = InsertPerson + "           ,[PostalCode] " + "\n";
+                InsertPerson = InsertPerson + "           ,[Country] " + "\n";
+                InsertPerson = InsertPerson + "           ,[Phone])" + "\n";
+                InsertPerson = InsertPerson + "     VALUES " + "\n";
+                InsertPerson = InsertPerson + "           (@CompanyName" + "\n";
+                InsertPerson = InsertPerson + "           ,@ContactName" + "\n";
+                InsertPerson = InsertPerson + "           ,@ContactTitle" + "\n";
+                InsertPerson = InsertPerson + "           ,@City" + "\n";
+                InsertPerson = InsertPerson + "           ,@PostalCode" + "\n";
+                InsertPerson = InsertPerson + "           ,@Country" + "\n";
+                InsertPerson = InsertPerson + "           ,@Phone)";
+
+                using (var comando = new SqlCommand(InsertPerson, conexion))
+                {
+                    int insertados = parametrosPersonal(persona, comando);
+                    return insertados;
+                }
+            }
+        }
+
+        public int parametrosPersonal(Person personal, SqlCommand comando)
+        {
+            comando.Parameters.AddWithValue("CompanyName", personal.CompanyName);
+            comando.Parameters.AddWithValue("ContactName", personal.ContactName);
+            comando.Parameters.AddWithValue("ContactTitle", personal.ContactTitle);
+            comando.Parameters.AddWithValue("City", personal.City);
+            comando.Parameters.AddWithValue("PostalCode", personal.PostalCode);
+            comando.Parameters.AddWithValue("Country", personal.Country);
+            comando.Parameters.AddWithValue("Phone", personal.Phone);
+            var insertados = comando.ExecuteNonQuery();
+            return insertados;
+        } 
     }
 }
