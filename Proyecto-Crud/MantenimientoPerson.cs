@@ -15,9 +15,22 @@ namespace Proyecto_Crud
     public partial class MantenimientoPerson : Form
     {
         PersonaRepository persona = new PersonaRepository();
-        public MantenimientoPerson()
+        int id_ = 0;
+        public MantenimientoPerson(int id=0)
         {
             InitializeComponent();
+            id_ = id;
+            if (id_>0)
+            {
+                this.Text = "Modificar Personal";
+                AñadorP.Text = "Edicion de Personal";
+                btnEnviarDatos.Hide();
+                CargarDatos();
+            }
+            else
+            {
+                btnModificar.Hide();
+            }
         }
 
         private Person ObtenerNuevoCliente()
@@ -76,6 +89,35 @@ namespace Proyecto_Crud
             else
             {
                 MessageBox.Show("Completa los campos vacios", "Añadir Personal", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        public void CargarDatos()
+        {
+            var perso=persona.ObtenerPorId(id_);
+
+            text1.Text = perso.CompanyName;
+            text2.Text = perso.ContactName;
+            text3.Text = perso.ContactTitle;
+            text4.Text = perso.City;
+            text5.Text = perso.PostalCode;
+            text6.Text = perso.Country;
+            textBox7.Text = perso.Phone;
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            var update = ObtenerNuevoCliente();
+            int actulizar = persona.ActualizarPersonal(update,id_);
+
+            if (actulizar>0)
+            {
+                MessageBox.Show($"Se ha actualizado de forma EXITOSA","Actulizacion",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show($"ERROR", "Actulizacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

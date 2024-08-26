@@ -23,7 +23,7 @@ namespace Proyecto_Crud
         private void CargarDatos()
         {
             var ObtenerTodo = personarepo.ObtenerDatos();
-            dataGridView1.DataSource = ObtenerTodo;
+            TablaPersonal.DataSource = ObtenerTodo;
         }
 
         private void tbFiltro_TextChanged(object sender, EventArgs e)
@@ -32,8 +32,32 @@ namespace Proyecto_Crud
             var ObtenerTodo = personarepo.ObtenerDatos();
 
             var filtro = ObtenerTodo.FindAll(f => f.CompanyName.StartsWith(tbFiltro.Text));
-            dataGridView1.DataSource = filtro;
+            TablaPersonal.DataSource = filtro;
         }
 
+        private void TablaPersonal_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex>=0 && e.ColumnIndex>=0)
+            {
+                int id = int.Parse(TablaPersonal.Rows[e.RowIndex].Cells["SupplierID"].Value.ToString());
+
+                if (TablaPersonal.Columns[e.ColumnIndex].Name.Equals("Update"))
+                {
+                    //MessageBox.Show($"Se toco EDITAR con el id: {id} ");
+                    MantenimientoPerson mante = new MantenimientoPerson(id);
+                    mante.ShowDialog();
+                    CargarDatos();
+                }
+                else if(TablaPersonal.Columns[e.ColumnIndex].Name.Equals("Delete"))
+                {
+                    MessageBox.Show($"Se toco ELIMINAR con el id: {id} ");
+                }
+            }
+        }
+
+        private void tbRecargar_Click(object sender, EventArgs e)
+        {
+            CargarDatos();
+        }
     }
 }

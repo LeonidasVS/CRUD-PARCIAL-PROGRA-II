@@ -48,6 +48,7 @@ namespace DatosLayer
             Person persona = new Person();
             persona.SupplierID = reader["SupplierID"] == DBNull.Value ? 0 : (int)reader["SupplierID"];
             persona.CompanyName = reader["CompanyName"] == DBNull.Value ? "" : (string)reader["CompanyName"];
+            persona.ContactName = reader["ContactName"] == DBNull.Value ? "" : (string)reader["ContactName"];
             persona.ContactTitle = reader["ContactTitle"] == DBNull.Value ? "" : (string)reader["ContactTitle"];
             persona.Address = reader["Address"] == DBNull.Value ? "" : (string)reader["Address"];
             persona.City = reader["City"] == DBNull.Value ? "" : (string)reader["City"];
@@ -102,6 +103,66 @@ namespace DatosLayer
             comando.Parameters.AddWithValue("Phone", personal.Phone);
             var insertados = comando.ExecuteNonQuery();
             return insertados;
-        } 
+        }
+
+        public int ActualizarPersonal(Person person, int id)
+        {
+            using (var conexion=DataBase.GetSqlConnection())
+            {
+                String ActualizarPersona = "";
+                ActualizarPersona = ActualizarPersona + "UPDATE [dbo].[Suppliers] " + "\n";
+                ActualizarPersona = ActualizarPersona + "   SET [CompanyName] = @CompanyName" + "\n";
+                ActualizarPersona = ActualizarPersona + "      ,[ContactName] = @ContactName" + "\n";
+                ActualizarPersona = ActualizarPersona + "      ,[ContactTitle] =@ContactTitle" + "\n";
+                ActualizarPersona = ActualizarPersona + "      ,[City] =@City" + "\n";
+                ActualizarPersona = ActualizarPersona + "      ,[PostalCode] =@PostalCode" + "\n";
+                ActualizarPersona = ActualizarPersona + "      ,[Country] =@Country" + "\n";
+                ActualizarPersona = ActualizarPersona + "      ,[Phone] =@Phone" + "\n";
+                ActualizarPersona = ActualizarPersona + $" WHERE SupplierID='{id}'";
+
+                using (var comando=new SqlCommand(ActualizarPersona,conexion))
+                {
+                    int actualizados = parametrosPersonal(person, comando);
+                    return actualizados;
+                }
+            }
+            
+        }
+
+        public Person ObtenerPorId(int id)
+        {
+            using (var conexion=DataBase.GetSqlConnection())
+            {
+                String selectFrom = "";
+                selectFrom = selectFrom + "SELECT [SupplierID] " + "\n";
+                selectFrom = selectFrom + "      ,[CompanyName] " + "\n";
+                selectFrom = selectFrom + "      ,[ContactName] " + "\n";
+                selectFrom = selectFrom + "      ,[ContactTitle] " + "\n";
+                selectFrom = selectFrom + "      ,[Address] " + "\n";
+                selectFrom = selectFrom + "      ,[City] " + "\n";
+                selectFrom = selectFrom + "      ,[Region] " + "\n";
+                selectFrom = selectFrom + "      ,[PostalCode] " + "\n";
+                selectFrom = selectFrom + "      ,[Country] " + "\n";
+                selectFrom = selectFrom + "      ,[Phone] " + "\n";
+                selectFrom = selectFrom + "      ,[Fax] " + "\n";
+                selectFrom = selectFrom + "      ,[HomePage] " + "\n";
+                selectFrom = selectFrom + "  FROM [dbo].[Suppliers]" + "\n";
+                selectFrom = selectFrom + $" Where SupplierID='{id}'";
+
+
+                using (SqlCommand comando=new SqlCommand(selectFrom,conexion))
+                {
+                    comando.Parameters.AddWithValue("SupplierID", id);
+
+                    var reader = comando.ExecuteReader();
+                    Person personas = null;
+                    if (reader.Read())
+                    {
+                        personas = LeerDelDataReader(reader);
+                    }
+                    return personas;
+                }
+            }
+        }
     }
 }

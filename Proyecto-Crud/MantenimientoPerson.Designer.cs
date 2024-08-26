@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.AñadorP = new System.Windows.Forms.Label();
             this.text1 = new System.Windows.Forms.TextBox();
             this.text2 = new System.Windows.Forms.TextBox();
             this.text5 = new System.Windows.Forms.TextBox();
@@ -46,18 +46,19 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
+            this.btnModificar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label1
+            // AñadorP
             // 
-            this.label1.AutoSize = true;
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label1.Font = new System.Drawing.Font("Poppins", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(128, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(250, 41);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Mante. Personal";
+            this.AñadorP.AutoSize = true;
+            this.AñadorP.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.AñadorP.Font = new System.Drawing.Font("Poppins", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AñadorP.Location = new System.Drawing.Point(142, 22);
+            this.AñadorP.Name = "AñadorP";
+            this.AñadorP.Size = new System.Drawing.Size(247, 41);
+            this.AñadorP.TabIndex = 1;
+            this.AñadorP.Text = "Añadir Personal";
             // 
             // text1
             // 
@@ -207,12 +208,26 @@
             this.textBox7.Size = new System.Drawing.Size(171, 20);
             this.textBox7.TabIndex = 26;
             // 
+            // btnModificar
+            // 
+            this.btnModificar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnModificar.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModificar.ForeColor = System.Drawing.Color.White;
+            this.btnModificar.Location = new System.Drawing.Point(282, 400);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(180, 44);
+            this.btnModificar.TabIndex = 37;
+            this.btnModificar.Text = "Editar";
+            this.btnModificar.UseVisualStyleBackColor = false;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            // 
             // MantenimientoPerson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(510, 498);
+            this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label15);
@@ -230,7 +245,7 @@
             this.Controls.Add(this.text4);
             this.Controls.Add(this.text2);
             this.Controls.Add(this.text1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.AñadorP);
             this.Name = "MantenimientoPerson";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mantenimiento Personal";
@@ -241,7 +256,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label AñadorP;
         private System.Windows.Forms.TextBox text1;
         private System.Windows.Forms.TextBox text2;
         private System.Windows.Forms.TextBox text5;
@@ -259,5 +274,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Button btnModificar;
     }
 }
