@@ -19,13 +19,19 @@ namespace Proyecto_Crud
 
         private void button1_Click(object sender, EventArgs e)
         {
+            // Crea una nueva instancia del formulario Listado
             Listado link = new Listado();
+
+            // Muestra el formulario Listado como un cuadro de diálogo modal
             link.ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            // Crea una nueva instancia del formulario MantenimientoPerson sin pasar un id
             MantenimientoPerson persona = new MantenimientoPerson();
+
+            // Muestra el formulario MantenimientoPerson como un cuadro de diálogo modal
             persona.ShowDialog();
         }
     }
