@@ -71,7 +71,7 @@ namespace Proyecto_Crud
             }
             else
             {
-                MessageBox.Show("Debes completar los campos vacios", "CAMPOS VACIOS");
+                MessageBox.Show("Debes completar los campos vacios", "CAMPOS VACIOS",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
         }
 
@@ -90,17 +90,25 @@ namespace Proyecto_Crud
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            var update = ObtenerNuevoCliente();
-            int actulizar = persona.ActualizarPersonal(update,id_);
-
-            if (actulizar>0)
+            if (text1.Text != "" && text2.Text != "" && text3.Text != "" && text4.Text != "" &&
+                text5.Text != "" && text6.Text != "" && textBox7.Text != "")
             {
-                MessageBox.Show($"Se ha actualizado de forma EXITOSA","Actulizacion",MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                var update = ObtenerNuevoCliente();
+                int actulizar = persona.ActualizarPersonal(update, id_);
+
+                if (actulizar > 0)
+                {
+                    MessageBox.Show($"Se ha actualizado de forma EXITOSA", "Actulizacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show($"ERROR", "Actulizacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
-                MessageBox.Show($"ERROR", "Actulizacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Debes completar los campos vacios", "CAMPOS VACIOS", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

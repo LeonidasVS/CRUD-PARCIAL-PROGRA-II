@@ -170,7 +170,8 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Poppins", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(276, 46);
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.Location = new System.Drawing.Point(279, 48);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(226, 30);
             this.label1.TabIndex = 1;
@@ -179,16 +180,17 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(603, 46);
+            this.label2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label2.Location = new System.Drawing.Point(21, 33);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 19);
+            this.label2.Size = new System.Drawing.Size(50, 19);
             this.label2.TabIndex = 5;
             this.label2.Text = "Filtrar";
             // 
             // tbFiltro
             // 
-            this.tbFiltro.Location = new System.Drawing.Point(654, 46);
+            this.tbFiltro.Location = new System.Drawing.Point(71, 32);
             this.tbFiltro.Name = "tbFiltro";
             this.tbFiltro.Size = new System.Drawing.Size(123, 20);
             this.tbFiltro.TabIndex = 4;
@@ -196,9 +198,10 @@
             // 
             // tbRecargar
             // 
-            this.tbRecargar.BackColor = System.Drawing.Color.Silver;
+            this.tbRecargar.BackColor = System.Drawing.Color.LightSlateGray;
             this.tbRecargar.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbRecargar.Location = new System.Drawing.Point(22, 12);
+            this.tbRecargar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.tbRecargar.Location = new System.Drawing.Point(688, 49);
             this.tbRecargar.Name = "tbRecargar";
             this.tbRecargar.Size = new System.Drawing.Size(89, 29);
             this.tbRecargar.TabIndex = 6;
@@ -210,7 +213,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.Color.LightSlateGray;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tbRecargar);
             this.Controls.Add(this.label2);
