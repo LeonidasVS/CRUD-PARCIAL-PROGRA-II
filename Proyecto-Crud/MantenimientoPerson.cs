@@ -64,8 +64,8 @@ namespace Proyecto_Crud
         private void btnEnviarDatos_Click(object sender, EventArgs e)
         {
             // Verifica que todos los campos de texto no estén vacíos
-            if (text1.Text != "" && text2.Text != "" && text3.Text != "" && text4.Text != "" &&
-                text5.Text != "" && text6.Text != "" && textBox7.Text != "")
+            ValidarDatos();
+            if (retornar == true)
             {
                 var resultado = 0;
                 // Obtiene el nuevo cliente a partir de los datos en los campos de texto
@@ -85,12 +85,24 @@ namespace Proyecto_Crud
                     text5.Text = "";
                     text6.Text = "";
                     textBox7.Text = "";
+                    retornar = false;
                 }
             }
             else
             {
                 // Muestra un mensaje de advertencia si algún campo de texto está vacío
                 MessageBox.Show("Debes completar los campos vacios", "CAMPOS VACIOS", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        bool retornar = false;
+
+        private void ValidarDatos()
+        {
+            if (text1.Text != "" && text2.Text != "" && text3.Text != "" && text4.Text != "" &&
+                text5.Text != "" && text6.Text != "" && textBox7.Text != "")
+            {
+                retornar = true;
             }
         }
 
@@ -114,8 +126,8 @@ namespace Proyecto_Crud
         private void btnModificar_Click(object sender, EventArgs e)
         {
             // Verifica que todos los campos de texto no estén vacíos
-            if (text1.Text != "" && text2.Text != "" && text3.Text != "" && text4.Text != "" &&
-                text5.Text != "" && text6.Text != "" && textBox7.Text != "")
+            ValidarDatos();
+            if (retornar == true)
             {
                 // Obtiene los datos actualizados del cliente desde los campos de texto
                 var update = ObtenerNuevoCliente();

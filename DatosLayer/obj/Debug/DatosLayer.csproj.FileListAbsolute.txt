@@ -4,3 +4,9 @@ C:\Users\USUARIO\OneDrive\Documentos\Guias-Ejercicios-PrograII\Crud_Parcial_1\Pr
 C:\Users\USUARIO\OneDrive\Documentos\Guias-Ejercicios-PrograII\Crud_Parcial_1\Proyecto-Crud\DatosLayer\bin\Debug\DatosLayer.pdb
 C:\Users\USUARIO\OneDrive\Documentos\Guias-Ejercicios-PrograII\Crud_Parcial_1\Proyecto-Crud\DatosLayer\obj\Debug\DatosLayer.dll
 C:\Users\USUARIO\OneDrive\Documentos\Guias-Ejercicios-PrograII\Crud_Parcial_1\Proyecto-Crud\DatosLayer\obj\Debug\DatosLayer.pdb
+C:\Users\USUARIO\OneDrive\Documentos\Guias-Ejercicios-PrograII\CRUD-PARCIAL\CRUD-PARCIAL-PROGRA-II\DatosLayer\bin\Debug\DatosLayer.dll
+C:\Users\USUARIO\OneDrive\Documentos\Guias-Ejercicios-PrograII\CRUD-PARCIAL\CRUD-PARCIAL-PROGRA-II\DatosLayer\bin\Debug\DatosLayer.pdb
+C:\Users\USUARIO\OneDrive\Documentos\Guias-Ejercicios-PrograII\CRUD-PARCIAL\CRUD-PARCIAL-PROGRA-II\DatosLayer\obj\Debug\DatosLayer.csproj.AssemblyReference.cache
+C:\Users\USUARIO\OneDrive\Documentos\Guias-Ejercicios-PrograII\CRUD-PARCIAL\CRUD-PARCIAL-PROGRA-II\DatosLayer\obj\Debug\DatosLayer.csproj.CoreCompileInputs.cache
+C:\Users\USUARIO\OneDrive\Documentos\Guias-Ejercicios-PrograII\CRUD-PARCIAL\CRUD-PARCIAL-PROGRA-II\DatosLayer\obj\Debug\DatosLayer.dll
+C:\Users\USUARIO\OneDrive\Documentos\Guias-Ejercicios-PrograII\CRUD-PARCIAL\CRUD-PARCIAL-PROGRA-II\DatosLayer\obj\Debug\DatosLayer.pdb
